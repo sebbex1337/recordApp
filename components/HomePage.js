@@ -32,10 +32,12 @@ export default function HomePage({ navigation, route }) {
             <Text className="text-xl text-teal-800 mb-4 mt-[100]">My LP collection</Text>
             <View className="flex flex-row flex-wrap justify-center gap-8">
                 {records.map((record, index) => (
-                    <View key={index} className="w-[150]">
-                        <Image source={{ uri: record.url }} style={{ width: 150, height: 150 }} />
-                        <Text className="text-center">{record.text}</Text>
-                    </View>
+                    <Pressable key={index} onPress={() => navigation.navigate("details", { record })}>
+                        <View className="w-[150]">
+                            <Image source={{ uri: record.url }} style={{ width: 150, height: 150 }} />
+                            <Text className="text-center">{record.text}</Text>
+                        </View>
+                    </Pressable>
                 ))}
             </View>
             <StatusBar style="auto" />
